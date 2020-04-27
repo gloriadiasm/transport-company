@@ -5,14 +5,26 @@ import org.hibernate.annotations.UpdateTimestamp
 import java.sql.Timestamp
 import javax.persistence.*
 
-@Entity
-data class Product (
+@Entity(name = "_Order")
+data class Order (
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         var id : Long ? = null,
 
-        @Column
-        var name : String ? = null,
+        @Column(name = "total_weight")
+        var totalWeight : Int ? = null,
+
+        @OneToOne
+        @JoinColumn
+        var supplier : Supplier ? = null,
+
+        @OneToOne
+        @JoinColumn(name = "origin")
+        var origin : Terminal ? = null,
+
+        @OneToOne
+        @JoinColumn(name = "destiny")
+        var destiny : Terminal ? = null,
 
         @Column (name = "created_at")
         @CreationTimestamp
@@ -20,8 +32,5 @@ data class Product (
 
         @Column (name = "updated_at")
         @UpdateTimestamp
-        var updatedAt: Timestamp? = null,
-
-        @OneToOne(mappedBy = "product", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
-        var supplier: Supplier
+        var updatedAt: Timestamp? = null
 )

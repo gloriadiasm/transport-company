@@ -6,13 +6,17 @@ import java.sql.Timestamp
 import javax.persistence.*
 
 @Entity
-data class Product (
+data class Supplier(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         var id : Long ? = null,
 
         @Column
         var name : String ? = null,
+
+        @OneToOne
+        @JoinColumn
+        var product: Product ? = null,
 
         @Column (name = "created_at")
         @CreationTimestamp
@@ -22,6 +26,6 @@ data class Product (
         @UpdateTimestamp
         var updatedAt: Timestamp? = null,
 
-        @OneToOne(mappedBy = "product", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
-        var supplier: Supplier
+        @OneToOne(mappedBy = "supplier", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
+        var order: Order
 )

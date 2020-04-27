@@ -6,7 +6,7 @@ import java.sql.Timestamp
 import javax.persistence.*
 
 @Entity
-data class Product (
+data class Terminal (
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         var id : Long ? = null,
@@ -22,6 +22,9 @@ data class Product (
         @UpdateTimestamp
         var updatedAt: Timestamp? = null,
 
-        @OneToOne(mappedBy = "product", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
-        var supplier: Supplier
+        @OneToOne(mappedBy = "origin", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
+        var origin: Order,
+
+        @OneToOne(mappedBy = "destiny", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
+        var destiny: Order
 )
