@@ -14,9 +14,8 @@ data class Supplier(
         @Column
         var name : String ? = null,
 
-        @OneToOne
-        @JoinColumn
-        var product: Product ? = null,
+        @Column
+        var product: Long ? = null,
 
         @Column (name = "created_at")
         @CreationTimestamp
@@ -24,8 +23,5 @@ data class Supplier(
 
         @Column (name = "updated_at")
         @UpdateTimestamp
-        var updatedAt: Timestamp? = null,
-
-        @OneToOne(mappedBy = "supplier", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
-        var order: Order
+        var updatedAt: Timestamp? = null
 )

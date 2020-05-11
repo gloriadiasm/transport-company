@@ -20,8 +20,5 @@ data class Truck (
 
         @Column (name = "updated_at")
         @UpdateTimestamp
-        var updatedAt: Timestamp? = null,
-
-        @OneToOne(mappedBy = "truck", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
-        var truckDriver: TruckDriver
+        var updatedAt: Timestamp? = null
 )

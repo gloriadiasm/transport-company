@@ -5,7 +5,7 @@ import org.hibernate.annotations.UpdateTimestamp
 import java.sql.Timestamp
 import javax.persistence.*
 
-@Entity(name = "_Order")
+@Entity
 data class Order (
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,17 +14,17 @@ data class Order (
         @Column(name = "total_weight")
         var totalWeight : Int ? = null,
 
-        @OneToOne
-        @JoinColumn
-        var supplier : Supplier ? = null,
+        @Column
+        var supplier : Long ? = null,
 
-        @OneToOne
-        @JoinColumn(name = "origin")
-        var origin : Terminal ? = null,
+        @Column(name = "truck_driver")
+        var truckDriver: Long ? = null,
 
-        @OneToOne
-        @JoinColumn(name = "destiny")
-        var destiny : Terminal ? = null,
+        @Column
+        var origin : Long ? = null,
+
+        @Column
+        var destiny : Long ? = null,
 
         @Column (name = "created_at")
         @CreationTimestamp
