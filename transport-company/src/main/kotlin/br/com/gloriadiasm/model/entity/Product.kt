@@ -20,8 +20,5 @@ data class Product (
 
         @Column (name = "updated_at")
         @UpdateTimestamp
-        var updatedAt: Timestamp? = null,
-
-        @OneToOne(mappedBy = "product", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
-        var supplier: Supplier
+        var updatedAt: Timestamp? = null
 )

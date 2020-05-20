@@ -15,9 +15,8 @@ data class TruckDriver (
         @Column
         var name : String ? = null,
 
-        @OneToOne
-        @JoinColumn
-        var truck : Truck ? = null,
+        @Column
+        var truck : Long ? = null,
 
         @Column (name = "created_at")
         @CreationTimestamp

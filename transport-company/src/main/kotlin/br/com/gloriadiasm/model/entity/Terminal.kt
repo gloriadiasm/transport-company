@@ -20,11 +20,5 @@ data class Terminal (
 
         @Column (name = "updated_at")
         @UpdateTimestamp
-        var updatedAt: Timestamp? = null,
-
-        @OneToOne(mappedBy = "origin", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
-        var origin: Order,
-
-        @OneToOne(mappedBy = "destiny", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, optional = false)
-        var destiny: Order
+        var updatedAt: Timestamp? = null
 )
